@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="1. Install Jekyll-Bootstrap">
+    <meta name="author" content="">
+    <!--<title>Candidate political campaign</title>-->
+	<title>Jekyll Quick Start</title>
+	<!-- core CSS -->
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="canonical" href="http://127.0.0.1:4000/usage/2011/10/31/jekyll-quick-start.html">
+  <link rel="alternate" type="application/rss+xml" title="Jekyll Local project" href="http://127.0.0.1:4000/feed.xml">
+
+    <!-- jsdelivr carousel plugin -->
+   
+    <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+
+    <link href="/css/custom.css" rel="stylesheet">
+    
+                
+</head><!--/head-->
+
+
+  <body class="blog">
+    
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number">
+                    <span style="margin-right: 30px"><i class="fa fa-phone primary_color"></i> 8 800 123 45 67</span><span><i class="fa fa-map-marker primary_color"></i> Santa Monica st. 567, LA, US.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href=""><img src="/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                
+                  
+                    <li>
+                  
+                    <a href="http://127.0.0.1:4000/">Home</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/blog/">Blog</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/contact-us/">Contact</a>
+                  </li>
+                
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+
+    
+    <div id="main" class="container" style="width:90%; margin:0 auto; position:relative">
+      
+<div class="row-fluid">
+  <div id="left-pane" class="span7">
+    <div class="content post">
+      <h1 class="title">Jekyll Quick Start</h1>
+      Quickly get your blog installed and published via GitHub Pages.
+Then run your blog locally and create your first post and page.
+
+      <h2 id="install-jekyll-bootstrap">1. Install Jekyll-Bootstrap</h2>
+
+<p><a href="/index.html#start-now">Install Jekyll-Bootsrap</a> if you haven’t already.
+Jekyll-bootstrap is a blogging framework with built-in support for theming, analytics, comments, and post/page creation.</p>
+
+<h2 id="run-jekyll-locally">2. Run Jekyll Locally</h2>
+
+<p>In order to preview your blog locally you’ll need to install the Jekyll ruby gem. Note gem dependencies will also be installed.
+You don’t have to run a local version but it helps if you want to preview your content before publishing.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>gem install jekyll</code></pre></figure>
+
+<p>If you run into a problem please consult the original <a href="https://github.com/mojombo/jekyll/wiki/Install">Jekyll installation documentation</a>.
+You can also <a href="https://github.com/plusjade/jekyll-bootstrap/issues">create a support issue</a> using GitHub Issues.</p>
+
+<p>Once the gem is installed you can navigate to your Jekyll-Bootstrap directory.
+If you’ve followed the homepage instructions this will be: USERNAME.github.com.
+Once in the directory you’ll run jekyll with server support:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span><span class="nb">cd </span>USERNAME.github.com 
+<span class="gp">$ </span>jekyll --server
+<span class="c"># remember to change USERNAME to your GitHub username.</span></code></pre></figure>
+
+<p>Your blog is now available at: <a href="http://localhost:4000/">http://localhost:4000/</a>.</p>
+
+<h2 id="create-a-post">2. Create a Post</h2>
+
+<p>Create posts easily via rake task:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake post <span class="nv">title</span><span class="o">=</span><span class="s2">"Hello World"</span></code></pre></figure>
+
+<p>The rake task automatically creates a file with properly formatted filename and YAML Front Matter.
+Make sure to specify your own title. By default, the date is the current date.</p>
+
+<p>The rake task will never overwrite existing posts unless you tell it to.</p>
+
+<h2 id="create-a-page">3. Create a Page</h2>
+
+<p>Create pages easily via rake task:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake page <span class="nv">name</span><span class="o">=</span><span class="s2">"about.md"</span></code></pre></figure>
+
+<p>Create a nested page:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake page <span class="nv">name</span><span class="o">=</span><span class="s2">"pages/about.md"</span></code></pre></figure>
+
+<p>Create a page with a “pretty” path:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake page <span class="nv">name</span><span class="o">=</span><span class="s2">"pages/about"</span>
+<span class="c"># this will create the file: ./pages/about/index.html</span></code></pre></figure>
+
+<p>The rake task automatically creates a page file with properly formatted filename and YAML Front Matter 
+as well as includes the Jekyll Bootstrap “setup” file.</p>
+
+<h3 id="jekyll-bootstrap-example-pages">Jekyll-Bootstrap Example Pages</h3>
+
+<p>Jekyll-bootstrap also provides many preconfigured page examples for reference. 
+You can study the source and customize it for your own needs.</p>
+
+<ul>
+
+
+
+
+
+  
+    
+  
+    
+  
+
+
+
+</ul>
+
+<h2 id="publish">4. Publish</h2>
+
+<p>After you’ve added posts or made changes to your theme or other files, simply commit them to your git repo and push the commits up to GitHub.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>git add .
+<span class="gp">$ </span>git commit -m <span class="s2">"Add new content"</span>
+<span class="gp">$ </span>git push origin master</code></pre></figure>
+
+<p>A GitHub post-commit hook will automatically deploy your changes to your hosted blog. You will receive a success or failure notice for every commit you make to your blog.</p>
+
+<h2 id="customize">5. Customize</h2>
+
+<p>Jekyll-Bootstrap can be used as-is as a basic blogging platform.  However there are plenty of ways to dig into deeper customization. 
+The following outlines deeper Jekyll-Bootstrap customization techniques:</p>
+
+<h3 id="themes">Themes</h3>
+
+<p>Jekyll-Bootstrap supports modular theming. Themes can co-exist and be enabled/disabled on demand.
+Editing, configuring, and creating themes is docummented in the <a href="/usage/jekyll-theming.html">Theming</a> section.</p>
+
+<h3 id="blog-configuration">Blog Configuration</h3>
+
+<p>Jekyll and Jekyll-Bootstrap has a simple but powerful <a href="/usage/blog-configuration.html">Jekyll Configuration System</a>. You can:</p>
+
+<ul>
+  <li>Specify a custom permalink format for blog posts.</li>
+  <li>Specify a commenting engine like disqus, intensedebate, livefyre, or custom.</li>
+  <li>Specify an analytics engine like google, getclicky, or custom.</li>
+</ul>
+
+<h3 id="programming-interface">Programming Interface</h3>
+
+<p>The API pages document main data-structures and code available for use in Jekyll and Jekyll-Bootstrap.
+Consult these pages for how and where to use the data and code provided.</p>
+
+<h3 id="jekyll-introduction">Jekyll Introduction</h3>
+
+<p><span class="label notice">highly recommend</span> <br />
+I highly recommend reading the <a href="/lessons/2016/01/21/jekyll-introduction.html">Jekyll Introduction</a> 
+if you plan to customize your blog. The introduction is meant for core understanding of how and why Jekyll works the way it does.
+This will provide you with the proper context, knowledge-base, and fundamentals necessary to understand
+and be efficient in working with Jekyll and Jekyll-Bootstrap.</p>
+
+
+    
+      <hr>
+      <div>
+        <a href="/usage/2011/10/30/jekyll-theming.html" class="btn btn-success btn-large">Next Step: Using Themes &rarr;</a>
+      </div>
+    
+    </div>  
+  </div>
+  <div id="right-pane" class="span5">
+    
+
+<div id="sidebar" class="sidebar">
+  <h4>Start Blogging</h4>
+  <ul>
+      
+    
+
+
+  
+    
+      
+      <li class="active"><a href="/usage/2011/10/31/jekyll-quick-start.html" class="active">Jekyll Quick Start</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/usage/2011/10/30/jekyll-theming.html">Using Themes</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/usage/2011/10/29/blog-configuration.html">Blog Configuration</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/usage/2011/10/28/deployment-and-hosting.html">Deployment &amp; Hosting</a></li>
+      
+    
+  
+
+
+
+  </ul>
+  
+</div>
+
+
+  </div>
+</div>
+
+      <hr>
+      <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    </div> <!-- /container -->
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes//js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    
+    <script>
+      $(function(){
+      
+        Toc.init('#sidebar', '#main');
+      
+      })
+    </script>
+    
+    
+  </body>
+</html>

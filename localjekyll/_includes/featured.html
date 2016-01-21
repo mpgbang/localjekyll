@@ -1,0 +1,39 @@
+{% if page.carousel %}
+<div data-slick='{"slidesToShow": 6, "slidesToScroll": 6}' class='lazy'>
+    {% for items in page.carousel %}
+      <div class="item active">
+            <img src="{{ items.image }}">
+            <div class="overlay">
+                <div class="recent-work-inner">
+                    <h2><a href="{{ item.post_link }}">{{ items.post_title }}</a> </h2>
+                    <p>{{ items.post_content }}</p>
+                    
+                    <a class="preview" href="{{ items.image }}" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                </div> 
+            </div>
+      </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>Please add coursel slider</p>
+{% endif %}
+
+<div class="row">
+    <div class="features container">
+        {% for items in page.featured %}
+        <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="feature-wrap">
+            
+                <div class="col-left">
+                    <div class="box-icon" style=""><i class="fa {{items.fa_icon}}"></i></div>
+                </div>
+                <div class="col-right">
+                    <h2>{{items.titile}}</h2>
+                    <h3>{{items.content}}</h3>
+                </div>
+            </div>
+        </div><!--/.col-md-4-->
+        {% endfor %}
+        
+    </div><!--/.services-->
+</div><!--/.row-->  

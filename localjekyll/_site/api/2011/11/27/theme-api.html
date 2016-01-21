@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Because we depend on Jekyll and Liquid, supporting modular theming requires some special considerations that are not always the most elegant solution.I expec...">
+    <meta name="author" content="">
+    <!--<title>Candidate political campaign</title>-->
+	<title>Theme API</title>
+	<!-- core CSS -->
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="canonical" href="http://127.0.0.1:4000/api/2011/11/27/theme-api.html">
+  <link rel="alternate" type="application/rss+xml" title="Jekyll Local project" href="http://127.0.0.1:4000/feed.xml">
+
+    <!-- jsdelivr carousel plugin -->
+   
+    <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+
+    <link href="/css/custom.css" rel="stylesheet">
+    
+                
+</head><!--/head-->
+
+
+  <body class="blog">
+    
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number">
+                    <span style="margin-right: 30px"><i class="fa fa-phone primary_color"></i> 8 800 123 45 67</span><span><i class="fa fa-map-marker primary_color"></i> Santa Monica st. 567, LA, US.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href=""><img src="/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                
+                  
+                    <li>
+                  
+                    <a href="http://127.0.0.1:4000/">Home</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/blog/">Blog</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/contact-us/">Contact</a>
+                  </li>
+                
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+
+    
+    <div id="main" class="container" style="width:90%; margin:0 auto; position:relative">
+      
+<div class="row-fluid">
+  <div id="left-pane" class="span7">
+    <div class="content post">
+      <h1 class="title">Theme API</h1>
+      The Theme API makes it possible for users and/or designers
+to create and publish modular themes that plug right into Jekyll Bootstrap.
+
+      <p>Because we depend on Jekyll and Liquid, supporting modular theming requires 
+some special considerations that are not always the most elegant solution.
+I expect the process to evolve over time so thanks for your feedback, patience, and support!</p>
+
+<p><span class="label notice">Recommended</span>
+View and study the repos for current published themes. <a href="http://github.com/jekyllbootstrap/">http://github.com/jekyllbootstrap/</a></p>
+
+<h2 id="theme-structure">Theme Structure</h2>
+
+<p>Version 0.1.0 of the Theme API is intentionally super-simple.  <br />
+Below is the structure of a theme as it exists in an “installed” state
+within Jekyll Bootstrap.</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">.
+|-- _includes
+    |-- themes
+        |-- THEME-NAME
+            |-- default.html
+            |-- post.html
+            |-- page.html
+            |-- settings.yml
+|-- assets
+    |-- themes
+        |-- THEME-NAME
+            |-- css
+                |-- style.css
+            |-- images
+                |-- smileyface.png</code></pre></figure>
+
+<p>All themes are name-spaced to avoid conflicting with other theme files.
+As shown, a theme needs two main but separate directory components:</p>
+
+<ol>
+  <li><strong>./_includes/themes/THEME-NAME</strong><br />
+  Any template defined in this folder will be usable as a normal layout once you run   <br />
+  <code class="highlighter-rouge">$ rake theme:switch name="THEME-NAME"</code>.</li>
+  <li><strong>./assets/themes/THEME-NAME</strong><br />
+  Static assets for your theme should be namespaced via this folder.
+  Your templates should use the liquid variable : <code class="highlighter-rouge">ASSET_PATH</code> to call these assets.</li>
+</ol>
+
+<h2 id="layouts">Layouts</h2>
+
+<p>Themes should come with three layouts.</p>
+
+<ul>
+  <li>default.html</li>
+  <li>post.html</li>
+  <li>page.html</li>
+</ul>
+
+<p>The default layout is the main template layout.
+The post and page define sub-layouts for their respective content types and get loaded into the default template.</p>
+
+<h3 id="yaml-front-matter-and-settingsyml">YAML Front Matter and settings.yml</h3>
+
+<p>Layouts should not and cannot contain YAML Front Matter
+because they need to be loaded as include files.</p>
+
+<p>To include YAML FRONT Matter, use the settings.yml file.
+Simply define valid YAML in the settings.yml file and it will automatically get
+loaded into the default.html YAML Front Matter.</p>
+
+<h2 id="assets">Assets</h2>
+
+<p>All assets used in your layout files should be organized neatly into
+your theme’s namespaced asset folder.</p>
+
+<p>Make sure you load your assets using the following URL format:</p>
+
+<pre><code>&lt;link rel="stylesheet" href="&#123;{ASSET_PATH}&#125;/css/style.css" type="text/css" media="screen" charset="utf-8"&gt;</code></pre>
+
+<p>Note how <code class="highlighter-rouge">ASSET_PATH</code> is prepended to url for the asset.</p>
+
+<h2 id="jekyll-bootstrap-helpers">Jekyll Bootstrap Helpers</h2>
+
+<p>Your theme should use JB helpers wherever possible.</p>
+
+<h3 id="jbanalytics">JB/analytics</h3>
+
+<pre><code>...
+&lt;body&gt;
+  &lt;div id="sidebar"&gt; ... &lt;/div&gt;
+  &lt;div id="main"&gt;
+    ...
+  &lt;/div&gt;
+  &#123;% include JB/analytics %&#125;
+&lt;/body&gt;
+...</code></pre>
+
+<p>JB/analytics should always be included in the default.html just before the closing body tag.</p>
+
+<h3 id="jbcomments">JB/comments</h3>
+
+<pre><code>...
+  &lt;div id="post"&gt;
+    &#123;{content}&#125;
+  &lt;/div&gt;
+  &lt;div class="comments"&gt;
+    &#123; include JB/comments &#125;
+  &lt;/div&gt;  
+...</code></pre>
+
+<p>JB/comments should always be included in the post.html file.
+Even if you don’t support commenting, it should be up to the user to disable comments
+via the configuration settings.</p>
+
+<h3 id="more-helpers">More Helpers</h3>
+
+<p>Please consult <a href="/api/bootstrap-api.html">Jekyll Bootstrap API Documentation</a>
+for all available methods to use in your theme.</p>
+
+<h2 id="fine-grained-customization">Fine Grained Customization</h2>
+
+<p>As stated the first public release of the theme API is intentionally super-simple.</p>
+
+<p>Most designers need more control of the framework. I fully agree! Here are the things most requested.</p>
+
+<ul>
+  <li>Fine grained per page customization.</li>
+  <li>Arbitrary template/sub-template creation and nesting.</li>
+  <li>Customization of all HTML output by JB methods.</li>
+  <li>Custom syntax highlighting schemes.</li>
+  <li>Standardized Javascript API.</li>
+  <li>Proper page/post list ordering.</li>
+</ul>
+
+<p>I expect to address every one of these issues but the initial release
+must be stable and <em>easy</em>. I am not a designer so rather than over-engineer, I leave it
+to the community to help me evolve the theming system.</p>
+
+<p>Please <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#112;&#108;&#117;&#115;&#106;&#097;&#100;&#101;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">email me</a> or open a <a href="http://github.com/plusjade/jekyll-bootstrap/issues">GitHub Issue</a> with feedback!</p>
+
+<h2 id="publishing-your-theme">Publishing Your Theme</h2>
+
+<p>Once your theme is looking good, you’ll need to package it as a <strong>Theme Package</strong>.
+Assuming you followed all the directions and have a valid directory structure:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake theme:package <span class="nv">name</span><span class="o">=</span><span class="s2">"THEME-NAME"</span></code></pre></figure>
+
+<p>This will create a folder at:</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">./_theme_packages/THEME-NAME</code></pre></figure>
+
+<p>The contents of this folder is 1:1 file matching plus a <code class="highlighter-rouge">packager.yml</code> detailing information
+about the packaging method.</p>
+
+<h3 id="manifestyml">manifest.yml</h3>
+
+<p>The manifest.yml file is required. It must contain a key-value for the name of your theme.
+Beyond that you can include description and authorship data.</p>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">name</span> <span class="pi">:</span> <span class="s2">"</span><span class="s">the-program"</span>
+<span class="s">website</span> <span class="pi">:</span>  <span class="s2">"</span><span class="s">http://layouts-the.me.s3-website-us-east-1.amazonaws.com/themes/the-program/"</span>
+<span class="s">description</span> <span class="pi">:</span>  <span class="s2">"</span><span class="s">A</span><span class="nv"> </span><span class="s">minimumlist</span><span class="nv"> </span><span class="s">theme</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Jekyll</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">Jekyll-Bootstrap."</span>
+<span class="s">author</span><span class="pi">:</span>
+  <span class="s">name</span> <span class="pi">:</span> <span class="s2">"</span><span class="s">Yuya</span><span class="nv"> </span><span class="s">Saito"</span>
+  <span class="s">email</span> <span class="pi">:</span> <span class="s2">"</span><span class="s">cssradar@gmail.com"</span>
+  <span class="s">website</span> <span class="pi">:</span> <span class="s2">"</span><span class="s">http://css.studiomohawk.com/"</span></code></pre></figure>
+
+<h3 id="readmemd">README.md</h3>
+
+<p>Additionally you may include a readme file with instructions specific to your theme
+as well as any credits or information you want to pass along.</p>
+
+<h3 id="profit">Profit!</h3>
+
+<p>Well maybe in the future, but right now if you’d like to have your theme officially
+included in the theme explorer, please put your packaged theme on GitHub and notify me.
+I’ll work out a better system shortly. <strong>Thanks!</strong></p>
+
+    
+    </div>  
+  </div>
+  <div id="right-pane" class="span5">
+    
+
+<div id="sidebar" class="sidebar">
+  <h4>1 - Learn Jekyll</h4>
+  <ul>
+    
+    
+
+
+  
+    
+      
+      <li><a href="/lessons/2016/01/21/jekyll-introduction.html">Jekyll Introduction</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/30/template-data-api.html">Template Data Api</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/29/jekyll-liquid-api.html">Jekyll Liquid Api</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+  <br>
+  <h4>2 - Learn Jekyll Bootstrap</h4>
+  <ul>
+      
+    
+
+
+  
+    
+      
+      <li><a href="/api/2011/11/28/bootstrap-api.html">Jekyll Bootstrap API</a></li>
+      
+    
+  
+    
+      
+      <li class="active"><a href="/api/2011/11/27/theme-api.html" class="active">Theme API</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+</div>
+
+
+  </div>
+</div>
+
+      <hr>
+      <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    </div> <!-- /container -->
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes//js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    
+    <script>
+      $(function(){
+      
+        Toc.init('#sidebar', '#main');
+      
+      })
+    </script>
+    
+    
+  </body>
+</html>

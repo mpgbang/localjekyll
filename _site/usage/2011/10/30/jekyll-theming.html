@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Introduction">
+    <meta name="author" content="">
+    <!--<title>Candidate political campaign</title>-->
+	<title>Using Themes</title>
+	<!-- core CSS -->
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="canonical" href="http://127.0.0.1:4000/usage/2011/10/30/jekyll-theming.html">
+  <link rel="alternate" type="application/rss+xml" title="Jekyll Local project" href="http://127.0.0.1:4000/feed.xml">
+
+    <!-- jsdelivr carousel plugin -->
+   
+    <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+
+    <link href="/css/custom.css" rel="stylesheet">
+    
+                
+</head><!--/head-->
+
+
+  <body class="blog">
+    
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number">
+                    <span style="margin-right: 30px"><i class="fa fa-phone primary_color"></i> 8 800 123 45 67</span><span><i class="fa fa-map-marker primary_color"></i> Santa Monica st. 567, LA, US.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href=""><img src="/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                
+                  
+                    <li>
+                  
+                    <a href="http://127.0.0.1:4000/">Home</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/blog/">Blog</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/contact-us/">Contact</a>
+                  </li>
+                
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+
+    
+    <div id="main" class="container" style="width:90%; margin:0 auto; position:relative">
+      
+<div class="row-fluid">
+  <div id="left-pane" class="span7">
+    <div class="content post">
+      <h1 class="title">Using Themes</h1>
+      Learn how to install, switch between, and edit themes in Jekyll Bootstrap.
+
+      <h2 id="introduction">Introduction</h2>
+
+<p>As of JB version 0.2.x themes are now entirely modular. They are tracked and versioned individually as <strong>Theme Packages</strong>.
+This allows everyone to publish and share themes freely.</p>
+
+<p>Jekyll-Bootstrap v 0.2.x ships with only the stock “twitter” theme.
+Additional themes need to be “installed” as outlined below.</p>
+
+<p><span class="label warning">NOTE</span>
+Jekyll-Bootstrap uses <code class="highlighter-rouge">rake tasks</code> to implement much of its functionality.
+If you are new to <code class="highlighter-rouge">rake</code> a rake task is just a ruby method that can be run in the base-directory
+of Jekyll-Bootstrap. You should never run arbitrary server side code on your system without first reviewing the source!
+View the <a href="https://github.com/plusjade/jekyll-bootstrap/blob/master/Rakefile">Rakefile</a> source.</p>
+
+<h2 id="find-themes">Find Themes</h2>
+
+<p>You can find and browse the latest official themes in the <a href="http://themes.jekyllbootstrap.com">Theme Explorer</a>.
+The theme explorer is still a work in progress; it shows full-website previews of all available themes.</p>
+
+<div style="ext-align:right; margin-bottom:10px">
+  <a href="http://themes.jekyllbootstrap.com" class="btn primary" style="">Launch Theme Explorer</a>
+</div>
+
+<p>Additionally, designers are free to publish their own themes as long as they are packaged appropriately.
+You can then use the same installation method outlined below to install the theme.</p>
+
+<p>Directly browse current Theme Packages on GitHub: <a href="https://github.com/jekyllbootstrap">https://github.com/jekyllbootstrap</a></p>
+
+<h2 id="install-themes">Install Themes</h2>
+
+<p>Install a theme by using the rake task and passing in the theme’s git url.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake theme:install <span class="nv">git</span><span class="o">=</span><span class="s2">"https://github.com/jekyllbootstrap/theme-the-program.git"</span></code></pre></figure>
+
+<p>The installer uses git to download the Theme Package and then installs it.
+If you have obtained a Theme Package in another way, such as zip download, you can manually
+place it into your <code class="highlighter-rouge">./_theme_packages</code> folder and then run the installer with the name of the theme.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake theme:install <span class="nv">name</span><span class="o">=</span><span class="s2">"THEME-NAME"</span></code></pre></figure>
+
+<p>As a convenience, after the install is successful, the task will ask you if you’d like to switch to the newly installed theme.
+Type ‘y’ and enter to switch!</p>
+
+<h2 id="switch-themes">Switch Themes</h2>
+
+<p>Once your themes are installed you can switch between them via rake task:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake theme:switch <span class="nv">name</span><span class="o">=</span><span class="s2">"the-program"</span>
+<span class="c"># for 0.1.0 users `rake switch_theme` still works.</span></code></pre></figure>
+
+<h2 id="customize-themes">Customize Themes</h2>
+
+<p>Theme layouts are contained in <code class="highlighter-rouge">./_includes/themes/THEME-NAME</code>.
+It is important that you edit files in the theme directory rather than <code class="highlighter-rouge">_layouts</code> 
+because switching themes will overwrite files in the <code class="highlighter-rouge">_layout</code> directory and you will lose your changes.
+The main point here is keeping themes modular; this way editing one does not affect the other.</p>
+
+<h3 id="adding-templates">Adding Templates</h3>
+
+<p>You are free add extra template files to <code class="highlighter-rouge">_layouts</code> in order to customize your blog.</p>
+
+<p>However if you want to add theme-specific layouts you should add them to the theme’s directory in <code class="highlighter-rouge">_includes</code>.
+After your files are added make sure to run the switcher again:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>rake theme:switch <span class="nv">name</span><span class="o">=</span><span class="s2">"the-minimum"</span></code></pre></figure>
+
+<h3 id="static-assets">Static Assets</h3>
+
+<p>Static assets are name-spaced for each theme. They are available at <code class="highlighter-rouge">./assets/themes/THEME-NAME</code>.
+Make sure you edit and add assets in this directory.
+All themes are provided with the liquid variable: <code class="highlighter-rouge">ASSET_PATH</code> which trace back to the aforementioned directory.</p>
+
+<h2 id="add-your-own-theme">Add Your Own Theme</h2>
+
+<p>Read the <a href="/api/theme-api.html">Theme API Documentation</a> for instructions on how to build and publish custom themes for Jekyll Bootstrap.</p>
+
+
+    
+      <hr>
+      <div>
+        <a href="/usage/2011/10/29/blog-configuration.html" class="btn btn-success btn-large">Next Step: Blog Configuration &rarr;</a>
+      </div>
+    
+    </div>  
+  </div>
+  <div id="right-pane" class="span5">
+    
+
+<div id="sidebar" class="sidebar">
+  <h4>Start Blogging</h4>
+  <ul>
+      
+    
+
+
+  
+    
+      
+      <li><a href="/usage/2011/10/31/jekyll-quick-start.html">Jekyll Quick Start</a></li>
+      
+    
+  
+    
+      
+      <li class="active"><a href="/usage/2011/10/30/jekyll-theming.html" class="active">Using Themes</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/usage/2011/10/29/blog-configuration.html">Blog Configuration</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/usage/2011/10/28/deployment-and-hosting.html">Deployment &amp; Hosting</a></li>
+      
+    
+  
+
+
+
+  </ul>
+  
+</div>
+
+
+  </div>
+</div>
+
+      <hr>
+      <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    </div> <!-- /container -->
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes//js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    
+    <script>
+      $(function(){
+      
+        Toc.init('#sidebar', '#main');
+      
+      })
+    </script>
+    
+    
+  </body>
+</html>

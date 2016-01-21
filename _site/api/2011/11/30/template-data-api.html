@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Global Page/Post Data">
+    <meta name="author" content="">
+    <!--<title>Candidate political campaign</title>-->
+	<title>Template Data Api</title>
+	<!-- core CSS -->
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="canonical" href="http://127.0.0.1:4000/api/2011/11/30/template-data-api.html">
+  <link rel="alternate" type="application/rss+xml" title="Jekyll Local project" href="http://127.0.0.1:4000/feed.xml">
+
+    <!-- jsdelivr carousel plugin -->
+   
+    <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+
+    <link href="/css/custom.css" rel="stylesheet">
+    
+                
+</head><!--/head-->
+
+
+  <body class="blog">
+    
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number">
+                    <span style="margin-right: 30px"><i class="fa fa-phone primary_color"></i> 8 800 123 45 67</span><span><i class="fa fa-map-marker primary_color"></i> Santa Monica st. 567, LA, US.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href=""><img src="/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                
+                  
+                    <li>
+                  
+                    <a href="http://127.0.0.1:4000/">Home</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/blog/">Blog</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/contact-us/">Contact</a>
+                  </li>
+                
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+
+    
+    <div id="main" class="container" style="width:90%; margin:0 auto; position:relative">
+      
+<div class="row-fluid">
+  <div id="left-pane" class="span7">
+    <div class="content post">
+      <h1 class="title">Template Data Api</h1>
+      The Template data API is a comprehensive list of all data accessible in templates via the Liquid templating language.
+
+      <h2 id="global-pagepost-data">Global Page/Post Data</h2>
+
+<p>Every content file that Jekyll processes is either a page or a post.
+In both cases the data relative to the specific page or post being rendered
+within the template is accessible through the <code class="highlighter-rouge">page</code> variable.
+The page variable is a globally accessible variable available to all templates, posts, pages, and includes being rendered
+for the given post/page instance.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="c1"># The following format represents a Jekyll::Post or Jekyll::Page object. </span>
+<span class="c1"># Jekyll::Post and Jekyll::Page objects may be nested in other variables in which case you can expect this same format:</span>
+<span class="n">page</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="s2">"layout"</span><span class="o">=&gt;</span><span class="s2">"post"</span><span class="p">,</span>
+ <span class="s2">"categories"</span><span class="o">=&gt;</span><span class="p">[</span><span class="s2">"lessons"</span><span class="p">],</span>
+ <span class="s2">"title"</span><span class="o">=&gt;</span><span class="s2">"Jekyll Liquid Api"</span><span class="p">,</span>
+ <span class="s2">"url"</span><span class="o">=&gt;</span><span class="s2">"/lessons/jekyll-liquid-api.html"</span><span class="p">,</span>
+ <span class="s2">"date"</span><span class="o">=&gt;</span><span class="mi">2011</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">27</span> <span class="mo">00</span><span class="p">:</span><span class="mo">00</span><span class="p">:</span><span class="mo">00</span> <span class="o">-</span><span class="mi">0800</span><span class="p">,</span>
+ <span class="s2">"id"</span><span class="o">=&gt;</span><span class="s2">"/lessons/jekyll-liquid-api"</span><span class="p">,</span>
+ <span class="s2">"next"</span><span class="o">=&gt;</span> <span class="c1">#Jekyll:Post @id="/lessons/template-data-api",</span>
+ <span class="s2">"previous"</span><span class="o">=&gt;</span> <span class="c1">#Jekyll:Post @id="/lessons/configuring-urls",</span>
+ <span class="s2">"tags"</span><span class="o">=&gt;</span><span class="p">[</span><span class="s2">"tagname1"</span><span class="p">,</span> <span class="s2">"tagname2"</span><span class="p">],</span>
+ <span class="s2">"custom_variable"</span><span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"custom"</span><span class="p">,</span> <span class="s2">"defined"</span><span class="p">,</span> <span class="s2">"data-structure"</span><span class="p">],</span>
+ <span class="s2">"content"</span><span class="o">=&gt;</span><span class="s2">"... this is the unparsed raw html page/post content ..."</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="setting-custom-data">Setting Custom Data</h3>
+
+<p>You can set custom variables through the post or page Yaml Front matter and they will be included
+in the page hash.</p>
+
+<p>One important thing to note is that each Jekyll “rendering” instance is treating as a page/post object.
+ALL YAML Front matter is merged into the current page/post instance.
+So if you define custom data in the post file, then define custom data in the sub-template,
+and also in the root template, all data will merge into the same page hash.</p>
+
+<h2 id="content-data">Content Data</h2>
+
+<p>Jekyll uses a special variable named <code class="highlighter-rouge">content</code> to refer to the current page/post content.</p>
+
+<p>The difference between  <code class="highlighter-rouge">content</code> and <code class="highlighter-rouge">page.content</code> is the former is parsed with markdown or textile while the latter is raw.</p>
+
+<p>The <code class="highlighter-rouge">content</code> variable is only accessible in template files and include files provided the include is included into a template.</p>
+
+<h3 id="content-in-primary-templates">Content in Primary Templates.</h3>
+
+<p>When calling <code class="highlighter-rouge">content</code> in a primary template the content includes any sub-templates
+previously rendered by the page/post.</p>
+
+<h3 id="content-in-sub-templates">Content in Sub-Templates.</h3>
+
+<p>When calling <code class="highlighter-rouge">content</code> in a sub-template <code class="highlighter-rouge">content</code> includes any sub-sub-templates
+previously rendered by the page/post. If there are none, <code class="highlighter-rouge">content</code> just reflects
+the page/post as processed by markdown or textile.</p>
+
+<h2 id="global-site-data">Global Site Data</h2>
+
+<p>This data is available anywhere liquid is available. This includes templates, posts, pages, and includes.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre></td><td class="code"><pre><span class="n">site</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"related_posts"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+ <span class="s2">"safe"</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">,</span>
+ <span class="s2">"auto"</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span>
+ <span class="s2">"server"</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span>
+ <span class="s2">"server_port"</span><span class="o">=&gt;</span><span class="mi">4000</span><span class="p">,</span>
+ <span class="s2">"source"</span><span class="o">=&gt;</span><span class="s2">"/Users/jade/Dropbox/github/jekyll-bootstrap"</span><span class="p">,</span>
+ <span class="s2">"destination"</span><span class="o">=&gt;</span><span class="s2">"/Users/jade/Dropbox/github/jekyll-bootstrap/_site"</span><span class="p">,</span>
+ <span class="s2">"plugins"</span><span class="o">=&gt;</span><span class="s2">"/Users/jade/Dropbox/github/jekyll-bootstrap/_plugins"</span><span class="p">,</span>
+ <span class="s2">"future"</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span>
+ <span class="s2">"lsi"</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">,</span>
+ <span class="s2">"pygments"</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">,</span>
+ <span class="s2">"markdown"</span><span class="o">=&gt;</span><span class="s2">"maruku"</span><span class="p">,</span>
+ <span class="s2">"permalink"</span><span class="o">=&gt;</span><span class="s2">"/:categories/:title.html"</span><span class="p">,</span>
+ <span class="s2">"markdown_ext"</span><span class="o">=&gt;</span><span class="s2">"markdown,mkd,mkdn,md"</span><span class="p">,</span>
+ <span class="s2">"textile_ext"</span><span class="o">=&gt;</span><span class="s2">"textile"</span><span class="p">,</span>
+ <span class="s2">"maruku"</span><span class="o">=&gt;</span>
+  <span class="p">{</span>
+   <span class="s2">"use_tex"</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">,</span>
+   <span class="s2">"use_divs"</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">,</span>
+   <span class="s2">"png_engine"</span><span class="o">=&gt;</span><span class="s2">"blahtex"</span><span class="p">,</span>
+   <span class="s2">"png_dir"</span><span class="o">=&gt;</span><span class="s2">"images/latex"</span><span class="p">,</span>
+   <span class="s2">"png_url"</span><span class="o">=&gt;</span><span class="s2">"/images/latex"</span>
+  <span class="p">},</span>
+ <span class="s2">"rdiscount"</span><span class="o">=&gt;</span>
+  <span class="p">{</span>
+    <span class="s2">"extensions"</span><span class="o">=&gt;</span><span class="p">[]</span>
+  <span class="p">},</span>
+ <span class="s2">"redcarpet"</span><span class="o">=&gt;</span>
+  <span class="p">{</span>
+    <span class="s2">"extensions"</span><span class="o">=&gt;</span><span class="p">[]</span>
+  <span class="p">},</span>
+ <span class="s2">"kramdown"</span><span class="o">=&gt;</span>
+  <span class="p">{</span>
+   <span class="s2">"auto_ids"</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">,</span>
+   <span class="s2">"footnote_nr"</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span>
+   <span class="s2">"entity_output"</span><span class="o">=&gt;</span><span class="s2">"as_char"</span><span class="p">,</span>
+   <span class="s2">"toc_levels"</span><span class="o">=&gt;</span><span class="s2">"1..6"</span><span class="p">,</span>
+   <span class="s2">"use_coderay"</span><span class="o">=&gt;</span><span class="kp">false</span><span class="p">,</span>
+   <span class="s2">"coderay"</span><span class="o">=&gt;</span>
+    <span class="p">{</span>
+     <span class="s2">"coderay_wrap"</span><span class="o">=&gt;</span><span class="s2">"div"</span><span class="p">,</span>
+     <span class="s2">"coderay_line_numbers"</span><span class="o">=&gt;</span><span class="s2">"inline"</span><span class="p">,</span>
+     <span class="s2">"coderay_line_number_start"</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span>
+     <span class="s2">"coderay_tab_width"</span><span class="o">=&gt;</span><span class="mi">4</span><span class="p">,</span>
+     <span class="s2">"coderay_bold_every"</span><span class="o">=&gt;</span><span class="mi">10</span><span class="p">,</span>
+     <span class="s2">"coderay_css"</span><span class="o">=&gt;</span><span class="s2">"style"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+ <span class="s2">"time"</span><span class="o">=&gt;</span><span class="mi">2011</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">20</span> <span class="mi">14</span><span class="p">:</span><span class="mo">03</span><span class="p">:</span><span class="mi">53</span> <span class="o">-</span><span class="mi">0800</span><span class="p">,</span>
+ <span class="s2">"posts"</span><span class="o">=&gt;</span>
+  <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+ <span class="s2">"pages"</span><span class="o">=&gt;</span>
+  <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Page</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+ <span class="s2">"html_pages"</span><span class="o">=&gt;</span>
+  <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Page</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+ <span class="s2">"categories"</span><span class="o">=&gt;</span>
+  <span class="p">{</span><span class="s2">"examples"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+   <span class="s2">"lessons"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+ <span class="s2">"tags"</span><span class="o">=&gt;</span>
+  <span class="p">{</span>
+   <span class="s2">"permalinks"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+   <span class="s2">"urls"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+   <span class="s2">"templating"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+   <span class="s2">"liquid"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">],</span>
+   <span class="s2">"posts"</span><span class="o">=&gt;</span>
+    <span class="p">[.</span><span class="nf">.</span><span class="o">.</span><span class="p">(</span><span class="no">Array</span> <span class="n">of</span> <span class="n">liquified</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">Post</span> <span class="n">objects</span><span class="p">).</span><span class="nf">.</span><span class="o">.</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="sitewide-custom-data">Sitewide Custom Data</h3>
+
+<p>Set sitewide custom data using the config file.</p>
+
+<p>Variables held in the config file get merged into the site variable.</p>
+
+<h2 id="categories">Categories</h2>
+
+<p>Categories may only be applied to posts and are available on a per-post basis as well as aggregated
+in a sitewide global variable, i.e. all categories available for the website.</p>
+
+<p>When iterating over categories the order is alpha descending</p>
+
+<h2 id="tags">Tags</h2>
+
+<p>Tags may only be applied to posts and are available on a per-post basis as well as aggregated
+in a sitewide global variable, i.e. all tags available for the website.</p>
+
+<p>When iterating over tags the order is alpha descending.</p>
+
+    
+      <hr>
+      <div>
+        <a href="/api/2011/11/29/jekyll-liquid-api.html" class="btn btn-success btn-large">Next Step: Jekyll Liquid Api &rarr;</a>
+      </div>
+    
+    </div>  
+  </div>
+  <div id="right-pane" class="span5">
+    
+
+<div id="sidebar" class="sidebar">
+  <h4>1 - Learn Jekyll</h4>
+  <ul>
+    
+    
+
+
+  
+    
+      
+      <li><a href="/lessons/2016/01/21/jekyll-introduction.html">Jekyll Introduction</a></li>
+      
+    
+  
+    
+      
+      <li class="active"><a href="/api/2011/11/30/template-data-api.html" class="active">Template Data Api</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/29/jekyll-liquid-api.html">Jekyll Liquid Api</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+  <br>
+  <h4>2 - Learn Jekyll Bootstrap</h4>
+  <ul>
+      
+    
+
+
+  
+    
+      
+      <li><a href="/api/2011/11/28/bootstrap-api.html">Jekyll Bootstrap API</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/27/theme-api.html">Theme API</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+</div>
+
+
+  </div>
+</div>
+
+      <hr>
+      <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    </div> <!-- /container -->
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes//js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    
+    <script>
+      $(function(){
+      
+        Toc.init('#sidebar', '#main');
+      
+      })
+    </script>
+    
+    
+  </body>
+</html>

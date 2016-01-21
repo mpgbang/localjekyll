@@ -1,0 +1,44 @@
+
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number">
+                    <span style="margin-right: 30px"><i class="fa fa-phone primary_color"></i> 8 800 123 45 67</span><span><i class="fa fa-map-marker primary_color"></i> Santa Monica st. 567, LA, US.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url}}"><img src="{{ img_path }}/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                {% for nav_item in site.data.nav %}
+                  {% if page.url == nav_item.link %}
+                    <li class="active">
+                  {% else %}
+                    <li>
+                  {% endif %}
+                    <a href="{{ nav_item.link }}">{{ nav_item.name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+

@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How it Works">
+    <meta name="author" content="">
+    <!--<title>Candidate political campaign</title>-->
+	<title>Jekyll Bootstrap API</title>
+	<!-- core CSS -->
+    
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
+    
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="canonical" href="http://127.0.0.1:4000/api/2011/11/28/bootstrap-api.html">
+  <link rel="alternate" type="application/rss+xml" title="Jekyll Local project" href="http://127.0.0.1:4000/feed.xml">
+
+    <!-- jsdelivr carousel plugin -->
+   
+    <link rel="stylesheet" type="text/css" href="/css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slick-theme.css"/>
+
+    <link href="/css/custom.css" rel="stylesheet">
+    
+                
+</head><!--/head-->
+
+
+  <body class="blog">
+    
+<header id="header">
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-4">
+                    <div class="top-number">
+                    <span style="margin-right: 30px"><i class="fa fa-phone primary_color"></i> 8 800 123 45 67</span><span><i class="fa fa-map-marker primary_color"></i> Santa Monica st. 567, LA, US.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href=""><img src="/images/logo.png" alt="logo"></a>
+            </div>
+    
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav navbar-right">
+                
+                  
+                    <li>
+                  
+                    <a href="http://127.0.0.1:4000/">Home</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/blog/">Blog</a>
+                  </li>
+                
+                  
+                    <li>
+                  
+                    <a href="/contact-us/">Contact</a>
+                  </li>
+                
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+
+    
+    <div id="main" class="container" style="width:90%; margin:0 auto; position:relative">
+      
+<div class="row-fluid">
+  <div id="left-pane" class="span7">
+    <div class="content post">
+      <h1 class="title">Jekyll Bootstrap API</h1>
+      The Bootstrap API documents all method calls available to your blog
+when using the JB framework.
+
+      <h2 id="how-it-works">How it Works</h2>
+
+<p>The Bootstrap API takes advantage of Jekyll’s ability to “include” files within other files.
+This allows us to package chunks of complex <a href="http://liquidmarkup.org/">Liquid</a> code into reusable modules that 
+can be called throughout your templates, pages, and posts.</p>
+
+<p>If you are familiar with ruby on rails this pattern is essentially the same as defining methods in a view helper module and invoking them in your views.</p>
+
+<h3 id="define-a-new-method">Define a new “method”</h3>
+
+<p>Jekyll-Bootstrap uses includes to emulate a ruby method.
+First encapsulate your liquid code logic in a Jekyll include file:</p>
+
+<pre><code>&#123;% if site.JB.tags_list.provider == "custom" %&#125;
+  &#123;% include custom/tags_list %&#125;
+&#123;% else %&#125;
+  &#123;% if tags_list.first[0] == null %&#125;
+    &#123;% for tag in tags_list %&#125; 
+      &lt;li&gt;&lt;a href="&#123;{ BASE_PATH }&#125;&#123;{ site.JB.tags_path }&#125;#&#123;{ tag }&#125;-ref"&gt;&#123;{ tag }&#125; &lt;span&gt;&#123;{ site.tags[tag].size }&#125;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &#123;% endfor %&#125;
+  &#123;% else %&#125;
+    &#123;% for tag in tags_list %&#125;
+      &lt;li&gt;&lt;a href="&#123;{ BASE_PATH }&#125;&#123;{ site.JB.tags_path }&#125;#&#123;{ tag[0] }&#125;-ref"&gt;&#123;{ tag[0] }&#125; &lt;span&gt;&#123;{ tag[1].size }&#125;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+    &#123;% endfor %&#125;
+  &#123;% endif %&#125;
+&#123;% endif %&#125;
+&#123;% assign tags_list = null %&#125;</code></pre>
+
+<p>The example above is <code class="highlighter-rouge">JB/tags_list</code> which is a helper to list tags and their total counts.</p>
+
+<p>In order to emulate passing arguments to the method, your include should reference localized variables whenever possible.
+Now we can pass in arguments by defining the local variables immediately before calling the include file:</p>
+
+<h3 id="invoking-the-method">Invoking the Method.</h3>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign tags_list = site.tags %&#125;
+  &#123;% include JB/tags_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<p>You can define as many “arguments” as you want, just remember to nullify them all at the end of your include to preserve modularity.</p>
+
+<h3 id="gotchas">Gotchas</h3>
+
+<p>In Liquid, it is impossible to inline assign a variable to anything other than a string.
+This means you can’t pass in arrays, hashes, etc.
+However, as shown above, you can pass-by-reference, and assign local variables to variables that already exist.</p>
+
+<p>So to pass in data-structures, you need to define them in your YAML Front Matter, or <code class="highlighter-rouge">_config.yml</code> file first, then pass them in by reference.</p>
+
+<h2 id="contibuting">Contibuting</h2>
+
+<p>If you have a good idea for another helper, please follow the outlines above,
+then submit a pull request to <a href="http://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a> and I’ll include it.</p>
+
+<h1 id="methods">Methods</h1>
+
+<h2 id="jbanalytics">JB/analytics</h2>
+
+<p>Includes analytics tracking code into your website.</p>
+
+<pre><code>&#123;% include JB/analytics %&#125;</code></pre>
+
+<p>By default, analytics <strong>are not loaded</strong> when in localhost (development).
+Analytics are loaded when <code class="highlighter-rouge">site.safe</code> is set to true. GitHub sets this flag so we treat a true setting as “production” mode.</p>
+
+<p>This method should be used within a theme’s default.html layout file.
+Configuration for this method is outlined at: <a href="/usage/blog-configuration.html">Jekyll Configuration System</a></p>
+
+<h2 id="jbcategorieslist">JB/categories_list</h2>
+
+<p>Provides a convenient way to list categories.</p>
+
+<h3 id="list-sitewide-categories">List Sitewide Categories</h3>
+
+<p>List site-wide categories by passing in the <code class="highlighter-rouge">site.categories</code> variable:</p>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign categories_list = site.categories %&#125;
+  &#123;% include JB/categories_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<h3 id="list-categories-for-a-specific-post">List Categories for a Specific Post</h3>
+
+<p>You can also list categories specific to a post:</p>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign categories_list = page.categories %&#125;
+  &#123;% include JB/categories_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<h3 id="list-categories-per-post-iteratively">List Categories Per Post Iteratively</h3>
+
+<p>Finally let’s iterate through all posts:</p>
+
+<pre><code>&#123;% for post in site.posts %&#125;
+  &lt;h3&gt;Categories for: &#123;{post.title}&#125;&lt;/h3&gt;  
+  &lt;ul&gt;
+    &#123;% assign categories_list = post.categories %&#125;  
+    &#123;% include JB/categories_list %&#125;
+  &lt;/ul&gt;
+&#123;% endfor %&#125;</code></pre>
+
+<h3 id="source">Source</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./_includes/JB/categories_list
+</code></pre>
+</div>
+
+<h2 id="jbcomments">JB/comments</h2>
+
+<p>Includes a commenting system on blog post pages.</p>
+
+<pre><code>&#123;% include JB/comments %&#125;</code></pre>
+
+<p>Depending on your provider, comments may not always work when on localhost (development).</p>
+
+<p>This method should be used within a theme’s post.html layout file.
+Configuration for this method is outlined at: <a href="/usage/blog-configuration.html">Jekyll Configuration System</a></p>
+
+<h2 id="jbpageslist">JB/pages_list</h2>
+
+<p>Provides a convenient way to list pages.</p>
+
+<h3 id="list-all-pages">List All Pages</h3>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign pages_list = site.pages %&#125;
+  &#123;% include JB/pages_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<h3 id="list-pages-from-a-sub-group">List Pages From a Sub-Group</h3>
+
+<p>Pages cannot have categories. However we can setup a similar functionality
+by manually associating a page to a “group”. Do this in the page’s yaml front matter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+layout: default
+title: A Nice Title
+group: project
+---
+</code></pre>
+</div>
+
+<p>You then pass the group name to the pages_list helper:</p>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign pages_list = site.pages %&#125;
+  &#123;% assign group = 'project' %&#125;
+  &#123;% include JB/pages_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<h3 id="source-1">Source</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./_includes/JB/pages_list
+</code></pre>
+</div>
+
+<h2 id="jbpostscollate">JB/posts_collate</h2>
+
+<p>Organize and list posts in month/year clusters.</p>
+
+<h3 id="collate-all-posts-in-reverse-chronological-order">Collate All Posts in Reverse Chronological Order</h3>
+
+<p>By default all posts are organized in reverse-chronological order - newest to oldest.</p>
+
+<pre><code>&#123;% assign posts_collate = site.posts %&#125;
+&#123;% include JB/posts_collate %&#125;</code></pre>
+
+<h3 id="collate-a-sub-set-of-posts">Collate a Sub-Set of Posts</h3>
+
+<p>To collate a sub-set of posts, just pass in the sub-set.
+Bellow, only posts tagged “jekyll” will be collated:</p>
+
+<pre><code>&#123;% assign posts_collate = site.tags.jekyll %&#125;
+&#123;% include JB/posts_collate %&#125;</code></pre>
+
+<h3 id="source-2">Source</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./_includes/JB/posts_collate
+</code></pre>
+</div>
+
+<h2 id="jbsetup">JB/setup</h2>
+
+<p>Provides global Liquid variables to all layouts, posts, and pages.</p>
+
+<pre><code>&#123;% include JB/setup %&#125;</code></pre>
+
+<p>This is automatically included for you when you use <code class="highlighter-rouge">rake post</code> and <code class="highlighter-rouge">rake page</code> to create posts and pages.</p>
+
+<p>The most relevant variables this sets is <code class="highlighter-rouge">BASE_PATH</code> which should be prepended to all post and page links,
+and <code class="highlighter-rouge">ASSET_PATH</code> which should be prepended to all theme-specific assets.</p>
+
+<p>These paths dynamically change based on localhost vs production mode as a convenience to you.</p>
+
+<h2 id="jbsharing">JB/sharing</h2>
+
+<p><strong>This is not finished yet =(</strong></p>
+
+<p>Includes sharing widgets on your blog post pages.</p>
+
+<p>Examples include tweet, plusone, like, reddit, etc.</p>
+
+<pre><code>&#123;% include JB/sharing %&#125;</code></pre>
+
+<p>This should be specified within a theme’s post.html layout file.
+Configuration for this method is outlined at: <a href="/usage/blog-configuration.html">Jekyll Configuration System</a></p>
+
+<h2 id="jbtagslist">JB/tags_list</h2>
+
+<p>Provides a list of tags and their total counts.</p>
+
+<h3 id="list-sitewide-tags">List Sitewide Tags</h3>
+
+<p>You can list sitewide tags by passing in the <code class="highlighter-rouge">site.tags</code> variable:</p>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign tags_list = site.tags %&#125;
+  &#123;% include JB/tags_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<h3 id="list-tags-for-a-specific-post">List Tags for a Specific Post</h3>
+
+<p>You can also list tags specific to a post:</p>
+
+<pre><code>&lt;ul&gt;
+  &#123;% assign tags_list = page.tags %&#125;
+  &#123;% include JB/tags_list %&#125;
+&lt;/ul&gt;</code></pre>
+
+<h3 id="list-tags-per-post-iteratively">List Tags Per Post Iteratively</h3>
+
+<p>Finally let’s iterate through all posts:</p>
+
+<pre><code>&#123;% for post in site.posts %&#125;
+  &lt;h3&gt;Tags for: &#123;{post.title}&#125;&lt;/h3&gt;  
+  &lt;ul&gt;
+    &#123;% assign tags_list = post.tags %&#125;  
+    &#123;% include JB/tags_list %&#125;
+  &lt;/ul&gt;
+&#123;% endfor %&#125;</code></pre>
+
+<h3 id="source-3">Source</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./_includes/JB/tags_list
+</code></pre>
+</div>
+
+<h1 id="method-overrides">Method Overrides</h1>
+
+<p>All Jekyll-Bootstrap methods documented above can be overridden with a custom implementation.
+<strong>Editing Jekyll-Bootstrap files directly is not encouraged</strong> because it will make upgrading to the latest release more problematic.</p>
+
+<p>Instead you can define another file with your own customizations. 
+This is useful if you want to define an alternative HTML output syntax for things like tag and page lists. 
+You also might want to override a comment provider with your own custom comment provider.</p>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="set-configuration">1. Set Configuration</h3>
+
+<p>Let Jekyll-Bootstrap know you want to override a method by updating your <code class="highlighter-rouge">_config.yml</code> file.</p>
+
+<p>Within the <code class="highlighter-rouge">JB</code> hash you must define (if not already defined) a hash with the key as the name of the method you intend to override:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>JB :
+  tags_list :
+    provider : "custom"
+</code></pre>
+</div>
+
+<p>The above code tells Jekyll-Bootstrap that you want the <code class="highlighter-rouge">tags_list</code> provider to be <code class="highlighter-rouge">custom</code>.</p>
+
+<h3 id="add-custom-file">2. Add custom file</h3>
+
+<p>Next you’ll need to define a file at the path:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./_includes/custom/tags_list
+</code></pre>
+</div>
+
+<p>This file, exactly as named, will be used in place of the source Jekyll-Bootstrap file.
+You’ll probably want to copy the “meat” of the code logic from the original source file into your custom file and then edit it as needed.</p>
+
+<p>You can follow this procedure for as many methods as you wish.</p>
+
+    
+      <hr>
+      <div>
+        <a href="/api/2011/11/27/theme-api.html" class="btn btn-success btn-large">Next Step: Theme API &rarr;</a>
+      </div>
+    
+    </div>  
+  </div>
+  <div id="right-pane" class="span5">
+    
+
+<div id="sidebar" class="sidebar">
+  <h4>1 - Learn Jekyll</h4>
+  <ul>
+    
+    
+
+
+  
+    
+      
+      <li><a href="/lessons/2016/01/21/jekyll-introduction.html">Jekyll Introduction</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/30/template-data-api.html">Template Data Api</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/29/jekyll-liquid-api.html">Jekyll Liquid Api</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+  <br>
+  <h4>2 - Learn Jekyll Bootstrap</h4>
+  <ul>
+      
+    
+
+
+  
+    
+      
+      <li class="active"><a href="/api/2011/11/28/bootstrap-api.html" class="active">Jekyll Bootstrap API</a></li>
+      
+    
+  
+    
+      
+      <li><a href="/api/2011/11/27/theme-api.html">Theme API</a></li>
+      
+    
+  
+
+
+
+  </ul>
+
+</div>
+
+
+  </div>
+</div>
+
+      <hr>
+      <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    </div> <!-- /container -->
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes//js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/app.js?v=0.1"></script>
+    
+    <script>
+      $(function(){
+      
+        Toc.init('#sidebar', '#main');
+      
+      })
+    </script>
+    
+    
+  </body>
+</html>
